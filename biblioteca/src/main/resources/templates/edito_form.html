@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Biblioteca-editorial</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <H2>CREAR EDITORIAL:</H2>
+        </div>
+        <br>
+        <form action="/editorial/registro" method="POST">
+
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <h5>ERROR!</h5>
+                <p th:text="${error}"></p>
+            </div>
+
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <h5>CARGA EXITOSA!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+
+            <label for="nombreEditorial"> Nombre Editorial: </label>
+            <input type="text" name="nombreEditorial">
+            <br>
+            <button type="submit">Enviar</button>
+            <br>
+        </form>
+    </body>
+</html>

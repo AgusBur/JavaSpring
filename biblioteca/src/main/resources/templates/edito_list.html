@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Biblioteca</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Id de la editorial</th>
+                        <th scope="col">Nombre de la editorial</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody th:each="editorial : ${editoriales}" >
+                    <tr>
+                        <th scope="row" th:text="${editorial.id}"></th>
+                        <td th:text="${editorial.nombre}"></td>
+                        <td>
+                            <a th:href="@{/editorial/modificar/__${editorial.id}__}"> <i class="fas fa-feather-alt"></i> Modificar </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

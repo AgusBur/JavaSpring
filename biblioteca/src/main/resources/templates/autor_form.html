@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Biblioteca-Autor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h2>CREAR AUTOR:</h2>
+        </div>
+        <br>
+        <form action="/autor/registro" method="POST">
+            <label for="nombreautor"> Nombre Autor: </label>
+            <input type="text" name="nombreautor">
+            <br>
+            <button type="submit">Enviar</button>
+            <br>
+            
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <h5>ERROR!</h5>
+                <p th:text="${error}"></p>
+            </div>
+
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <h5>CARGA EXITOSA!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </form>
+    </body>
+</html>

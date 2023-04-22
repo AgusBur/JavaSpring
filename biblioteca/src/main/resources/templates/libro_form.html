@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Biblioteca-libro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h2>CARGAR UN LIBRO:</h2>
+        </div>
+        <div>
+            <form action="/libro/registro" method="POST">
+
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                    <h5>ERROR</h5>
+                    <p th:text="${error}"></p>
+                </div>
+                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                    <h5>CARGA EXITOSA</h5>
+                    <p th:text="${exito}"></p>
+                </div>
+                
+                <label for="isbn"> N° Isbn:</label>
+                <input type="number" name="isbn">
+                <br>
+                <br>
+                <label for="titulo"> Título:</label>
+                <input type="text" name="titulo">
+                <br>
+                <br>
+                <label for="ejemplares"> Cantidad de ejemplares:</label>
+                <input type="number" name="cantidEjemplares">
+                <br>
+                <br>
+                <div class="form-group my-3">
+                    <select name="idAutor">
+                        <option> Selecionar autor</option>
+                        <option th:each="autor : ${autores}"
+                                th:value="${autor.id}"
+                                th:text="${autor.nombre}">
+                        </option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <div class="form-group my-3">
+                    <select name="idEdito">
+                        <option> Selecionar editorial</option>
+                        <option th:each="edito : ${editoriales}"
+                                th:value="${edito.id}"
+                                th:text="${edito.nombre}">
+                        </option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <button type="submit">Cargar</button>
+            </form>
+        </div>
+    </body>
+</html>
