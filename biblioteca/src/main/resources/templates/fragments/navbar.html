@@ -1,0 +1,41 @@
+<div th:fragment="navbar">
+    <nav>
+        <ul>
+            <li th:if="${session.usuariosession != null}"><a href="#" role="button">Libros</a>
+                <ul>
+                    <li sec:authorize="hasRole('ADMIN')"><a th:if="${session.usuariosession != null}" th:href=@{/libro/registrar}>Crear libro</a></li>
+                    <li><a th:if="${session.usuariosession != null}" th:href=@{/libro/lista}>Lista libros</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.usuariosession != null}"><a href="#" role="button">Autores</a>
+                <ul>
+                    <li sec:authorize="hasRole('ADMIN')"><a th:if="${session.usuariosession != null}" th:href=@{/autor/registrar}>Crear autor</a></li>
+                    <li><a th:if="${session.usuariosession != null}" th:href=@{/autor/lista}>Lista autores</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.usuariosession != null}"><a href="#" role="button">Editoriales</a>
+                <ul>
+                    <li sec:authorize="hasRole('ADMIN')"><a th:if="${session.usuariosession != null}" th:href=@{/editorial/registrar}>Crear editorial</a></li>
+                    <li><a th:if="${session.usuariosession != null}" th:href=@{/editorial/lista}>Lista editoriales</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.usuariosession != null}" sec:authorize="hasRole('ADMIN')"><a sec:authorize="hasRole('ADMIN')" href="#" role="button">Usuarios</a>
+                <ul>
+                    <li><a th:if="${session.usuariosession != null}" th:href=@{/admin/usuario}>Lista usuarios</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.usuariosession == null}">
+                <ul>
+                    <li><a th:if="${session.usuariosession == null}" href="/registrar" >Registrate</a></li>
+                    <li><a th:if="${session.usuariosession == null}" href="/login">Ingresar</a></li>
+                </ul>
+            </li>
+            <li th:if="${session.usuariosession != null}"><a href="#" role="button">Perfil</a>
+                <ul>
+                    <li><a th:if="${session.usuariosession != null}" href="/perfil">Editar perfil</a></li>
+                    <li><a th:if="${session.usuariosession != null}" href="/logout">Cerrar sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

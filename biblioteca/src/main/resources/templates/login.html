@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    
+    <div th:replace="fragments/head :: head"></div>
+    <body>
+        <br>
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+            <div class="card-body">
+                <h5 class="card-title">Error!</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+        <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card-text" th:text="${exito}"></p>
+            </div>
+        </div>
+        <div>
+            <form th:action="@{/logincheck}" method="POST">
+                <div>
+                    <h3>Ingresar a la biblioteca</h3>
+                </div>
+                <br>
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email">
+                </div>
+                <br>
+                <div>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password">
+                </div>
+                <br>
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <a href="/">Volver</a>
+        </div>
+    </body>
+</html>

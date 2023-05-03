@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <div th:replace="fragments/head :: head"></div>
+    <body>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Id del Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Foto de perfil</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Cambiar rol</th>
+                        <th scope="col">Modificar</th>
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}">
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td><a><img th:if="${usuario.imagen != null}" 
+                            th:src="@{/imagen/perfil/__${usuario.id}__}"></a></td>
+                        <td th:text="${usuario.rol}"></td>
+                        <td><a th:href="@{/admin/modificarRol/__${usuario.id}__}">Cambiar</a></td>
+                        <td><a th:href="@{/usuario/modificar/__${usuario.id}__}">Modificar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${exito}!=null">
+            <div>
+                <h5>Exito!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+        <div th:if="${error}!=null">
+            <div>
+                <h5>Error!</h5>
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+        <div>
+            <a href="/admin/dashboard">Volver</a>
+        </div>
+    </body>
+</html>

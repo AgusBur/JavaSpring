@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <title>Biblioteca</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+    
+    <div th:replace="fragments/head :: head"></div>
     <body>
         <div>
             <table class="table table-dark">
@@ -15,7 +12,7 @@
                         <th scope="col">Ejemplares</th>
                         <th scope="col">Autor</th>
                         <th scope="col">Editorial</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
                 <tbody th:each="libro : ${libros}">
@@ -26,11 +23,15 @@
                         <td th:text="${libro.autor.nombre}"></td>
                         <td th:text="${libro.edito.nombre}"></td>
                         <td>
-                            <a th:href="@{/libro/modificar/__${libro.isbn}__}"> <i class="fas fa-feather-alt"></i> Modificar </a>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/libro/modificar/__${libro.isbn}__}"> <i class="fas fa-feather-alt"></i> Modificar </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <br>
+        <div>
+            <a href="/inicio">Volver</a>
         </div>
     </body>
 </html>

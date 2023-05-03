@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <div th:replace="fragments/head :: head"></div>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <header>
+            <div>
+                <a th:text="'Error ' + ${codigo}"><h2>BIBLIOTECA</h2></a>
+                <p th:text="${mensaje}"></p>
+            </div>
+        </header>
+    </body>
+</html>

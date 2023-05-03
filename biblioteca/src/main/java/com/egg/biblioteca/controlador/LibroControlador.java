@@ -3,7 +3,7 @@ package com.egg.biblioteca.controlador;
 import com.egg.biblioteca.entidad.Autor;
 import com.egg.biblioteca.entidad.Editorial;
 import com.egg.biblioteca.entidad.Libro;
-import com.egg.biblioteca.excepcion.MyException;
+import com.egg.biblioteca.excepcion.MiException;
 import com.egg.biblioteca.service.AutorService;
 import com.egg.biblioteca.service.EditorialService;
 import com.egg.biblioteca.service.LibroService;
@@ -50,7 +50,7 @@ public class LibroControlador {
             libroSer.crearLibro(isbn, titulo, cantidEjemplares, idAutor, idEdito); //si sale bien retornamos al index
             modelo.put("exito", "El libro fue cargado correctamente!");
 
-        } catch (MyException ex) {
+        } catch (MiException ex) {
             Logger.getLogger(LibroControlador.class.getName()).log(Level.SEVERE, null, ex);
 
             List<Autor> autores = autorSer.traerTodosAutores();
@@ -99,7 +99,7 @@ public class LibroControlador {
             libroSer.modificarLibro(isbn, titulo, cantidEjemplares, idAutor, idEdito);
 
             return "redirect:../lista";
-        } catch (MyException ex) {
+        } catch (MiException ex) {
 
             List<Autor> autores = autorSer.traerTodosAutores();
             List<Editorial> editoriales = editoSer.traerTodasEditoriales();

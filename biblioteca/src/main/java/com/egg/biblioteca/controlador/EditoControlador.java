@@ -1,7 +1,7 @@
 package com.egg.biblioteca.controlador;
 
 import com.egg.biblioteca.entidad.Editorial;
-import com.egg.biblioteca.excepcion.MyException;
+import com.egg.biblioteca.excepcion.MiException;
 import com.egg.biblioteca.service.EditorialService;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,7 +32,7 @@ public class EditoControlador {
         try {
             editoSer.crearEditorial(nombreEditorial);
             modelo.put("exito", "La editorial fue cargada correctamente!");
-        } catch (MyException ex) {
+        } catch (MiException ex) {
             Logger.getLogger(EditoControlador.class.getName()).log(Level.SEVERE, null, ex);
             modelo.put("error", ex.getMessage());
             return "edito_form.html";
@@ -61,7 +61,7 @@ public class EditoControlador {
         try {
             editoSer.modificarEditorial(nombreEditorial, id);
             return "redirect:../lista";
-        } catch (MyException ex) {
+        } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             return "edito_modificar.html";
         }
